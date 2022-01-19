@@ -1,3 +1,5 @@
 [submodule ".style"]
 	path = .style
 	url = https://github.com/andreaomicini/beamer-AMSBolognaFC.git
+	branch = main
+
