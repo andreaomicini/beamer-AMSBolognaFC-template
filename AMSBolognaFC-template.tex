@@ -16,7 +16,11 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
-\newcommand{\version}{1}
+% version
+\newcommand{\templatemajor}{1}
+\newcommand{\templateminor}{2}
+\newcommand{\templatepatch}{20220119}
+\newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[AMS Bologna FC Beamer Style]
 {AMS Bologna FC Beamer Style}
@@ -30,7 +34,7 @@
 \institute[DISI, Univ.\ Bologna]
 {Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna}
 %
-\date[v.\ \version.\today]{version \version.\today}
+\date[v.\ \templateversion]{version \templateversion}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -137,8 +141,9 @@ The files
 \begin{itemize}
 	\item \texttt{beamercolorthemebolognafc.sty}
 	\item \texttt{beamerthemeAMSBolognaFC.sty}
+	\item \texttt{almacesena-background.pdf}
 \end{itemize}
-along with \texttt{img} folder containing \texttt{almacesena-background.pdf} file should be placed either in the local folder with the main \texttt{.tex} file, or in your Beamer system directory, e.g.
+should be placed either in the local folder with the main \texttt{.tex} file, or in your Beamer system directory, e.g.
 \begin{itemize}
 	\item \texttt{/Users/\{username\}/Library/texmf/tex/latex/local/beamer/}
 \end{itemize}
