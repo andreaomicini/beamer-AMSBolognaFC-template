@@ -9,7 +9,6 @@
 \documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[T1]{fontenc}
 \usepackage{wasysym}
 \usepackage[yyyymmdd]{datetime}
 \renewcommand{\dateseparator}{}
@@ -18,8 +17,8 @@
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 % version
 \newcommand{\templatemajor}{1}
-\newcommand{\templateminor}{2}
-\newcommand{\templatepatch}{20220119}
+\newcommand{\templateminor}{3}
+\newcommand{\templatepatch}{20220217}
 \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[AMS Bologna FC Beamer Style]
@@ -134,7 +133,7 @@
 %===============================================================================
 
 %/////////
-\begin{frame}[c]{Files}
+\begin{frame}[c,allowframebreaks]{Files}
 %
 \begin{block}{Style files}
 The files
@@ -143,9 +142,20 @@ The files
 	\item \texttt{beamerthemeAMSBolognaFC.sty}
 	\item \texttt{almacesena-background.pdf}
 \end{itemize}
-should be placed either in the local folder with the main \texttt{.tex} file, or in your Beamer system directory, e.g.
+should be placed either in the local folder with the main \texttt{.tex} file, or, in your Beamer system directory, e.g.
 \begin{itemize}
 	\item \texttt{/Users/\{username\}/Library/texmf/tex/latex/local/beamer/}
+\end{itemize}
+\end{block}
+%
+\begin{block}{BST files}
+The files
+\begin{itemize}
+	\item \texttt{apalike-AMS.bst}
+\end{itemize}
+should be placed either in the local folder with the main \texttt{.tex} file, or, in your Beamer system directory, e.g.
+\begin{itemize}
+	\item \texttt{/Users/\{username\}/Library/texmf/bibtex/bst/local/}
 \end{itemize}
 \end{block}
 %
@@ -164,6 +174,20 @@ Your main Beamer \texttt{.tex} file should open with the declaration
 \end{verbatim}
 %
 so as to use the AMS Bologna FC Beamer style 
+\end{block}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile]{Bibliography Style}
+%
+\begin{block}{\texttt{apalike-AMS}}
+Your main Beamer \texttt{.tex} file should include the declaration
+\begin{verbatim}
+    \bibliographystyle{apalike-AMS}
+\end{verbatim}	
+so as to use the AMS Bologna FC \BibTeX{} style 
 \end{block}
 %
 \end{frame}
@@ -364,8 +388,7 @@ This template's sources can be used as a simple example of how yo use this Beame
 %	\tiny
 	\scriptsize
 %	\footnotesize
-	\bibliographystyle{apalike}
-%	\bibliographystyle{alpha}
+	\bibliographystyle{apalike-AMS}
 	\bibliography{AMSBolognaFC-template}
 \end{frame}
 %/////////
