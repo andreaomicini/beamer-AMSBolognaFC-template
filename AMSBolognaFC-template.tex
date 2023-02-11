@@ -4,9 +4,8 @@
 % Alma Mater Studiorum - Università di Bologna
 % mailto:andrea.omicini@unibo.it
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\documentclass[handout]{beamer}\mode<handout>{\usetheme{default}}
-%
-\documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+\documentclass[presentation,apice]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+%\documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{wasysym}
@@ -17,8 +16,8 @@
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 % version
 \newcommand{\templatemajor}{1}
-\newcommand{\templateminor}{5}
-\newcommand{\templatepatch}{20230210}
+\newcommand{\templateminor}{6}
+\newcommand{\templatepatch}{20230211}
 \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[AMS Bologna FC Beamer Style]
@@ -367,6 +366,60 @@ This template's sources can be used as a simple example of how yo use this Beame
 \end{frame}
 %/////////
 
+%===============================================================================
+\section{New Options}
+%===============================================================================
+
+%/////////
+\begin{frame}[c,fragile,allowframebreaks]{\texttt{apice} option}
+%
+\begin{alertblock}{\texttt{apice} Beamer option}
+\begin{itemize}
+	\item the option \texttt{apice} can be used in the presentation preamble
+	\begin{itemize}
+		\item as in
+		\begin{verbatim}
+\documentclass[presentation,apice]{beamer}...
+		\end{verbatim}
+	\end{itemize}
+	\item enables the display of the \BibTeX{} field \texttt{apice}
+	\begin{itemize}
+		\item containing the relative URL of the publication on the \alert{\href{http://apice.unibo.it/}{\textsf{APICe}}} Wiki
+	\end{itemize}
+	\item properly linked to the corresponding \href{http://apice.unibo.it/}{\textsf{APICe}} page
+\end{itemize}
+\end{alertblock}
+%
+\begin{exampleblock}{Example}
+%
+The following \BibTeX{} entry in the \texttt{.bib} file with the \texttt{apice} option enabled
+%
+{\tiny\begin{verbatim}
+@manual{bibtex-patashnik88,
+    apice = {BibtexPatashnik88},
+    author = {Patashnik, Oren},
+    booktitle = {\BibTeXing},
+    month = {8~} # feb,
+    organization = {CTAN, The Comprehensive TeX Archive Network},
+    title = {\BibTeX{}ing},
+    url = {http://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf},
+    year = 1988}
+\end{verbatim}}
+%
+would translate into the following entry in the presentation bibliography
+%
+\begin{thebibliography}{}
+\bibitem[Patashnik, 1988]{bibtex-patashnik88}
+Patashnik, O. (1988).
+\\[-0.1em] {\em \BibTeX{}ing}.
+\\[-0.0em] CTAN, The Comprehensive TeX Archive Network
+\\[-0.4em] \apicepar{BibtexPatashnik88} \uuurl{http://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf}.
+\end{thebibliography}
+%
+\end{exampleblock}
+%
+\end{frame}
+%/////////
 
 %===============================================================================
 \section*{}
