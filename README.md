@@ -30,6 +30,32 @@ latexmk -pdf AMSBolognaFC-template.tex
 The most recent build of the template is attached to every
 [release](https://github.com/andreaomicini/beamer-AMSBolognaFC-template/releases).
 
+### the `apice` option
+
+The template's preamble enables the style's `apice` option:
+
+```latex
+\documentclass[presentation,apice]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+```
+
+With it, an `apice` field in a BibTeX entry is displayed as a small `(APICe)`
+marker linking to the corresponding page of the
+[APICe](https://apice.unibo.it/) Wiki:
+
+```bibtex
+@manual{bibtex-patashnik88,
+    ...
+    apice = {BibtexPatashnik88},
+}
+```
+
+Drop the option and nothing else has to change: `\apicepar` is still defined,
+but expands to nothing, so the same `.bib` and the same slides keep working
+with the markers simply absent.
+
+The template's own slides demonstrate the option, and the bibliography shows
+the marker in place.
+
 ## structure
 
 The style itself lives in the `.style` submodule, which tracks the `main`
