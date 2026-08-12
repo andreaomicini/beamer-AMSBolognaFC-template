@@ -14,11 +14,16 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
-% version
+% version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\templatemajor}{1}
-\newcommand{\templateminor}{6}
-\newcommand{\templatepatch}{20230214}
-\newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
+\newcommand{\templateminor}{7}
+% \templatepatch is optional: comment the next line out to release as Major.Minor
+\newcommand{\templatepatch}{0}
+\ifdefined\templatepatch
+  \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
+\else
+  \newcommand{\templateversion}{\templatemajor.\templateminor}
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[AMS Bologna FC Beamer Style]
 {AMS Bologna FC Beamer Style}

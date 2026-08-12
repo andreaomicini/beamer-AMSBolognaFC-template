@@ -4,42 +4,43 @@ on:
     branches:
       - main
       - master
+
 env:
   LATEX_ROOT: AMSBolognaFC-template
+
+permissions:
+  contents: write
+
 jobs:
   compile:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
-          
+
       - name: Build latex
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ env.LATEX_ROOT }}.tex
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -shell-escape
-          
-      - name: Get Version
+
+      - name: Compute version
         id: get-version
-        run: echo "::set-output name=version::$(cat *.tex | python .github/scripts/compute-version.py)"
-        
-      - name: Create Release
-        id: create-release
-        uses: actions/create-release@v1
+        run: |
+          BASE="$(python3 .github/scripts/compute-version.py ${LATEX_ROOT}.tex)"
+          STAMP="$(date -u +'%Y-%m-%dT%H%M%S')"
+          echo "version=${BASE}" >> "$GITHUB_OUTPUT"
+          echo "tag=${BASE}-${STAMP}" >> "$GITHUB_OUTPUT"
+
+      - name: Create release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: '${{ steps.get-version.outputs.version }}'
-          
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create-release.outputs.upload_url }}
-          asset_path: ./${{ env.LATEX_ROOT }}.pdf
-          asset_name: ${{ env.LATEX_ROOT }}-${{ steps.get-version.outputs.version }}.pdf
-          asset_content_type: application/pdf
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.get-version.outputs.tag }}
+        run: |
+          cp "${LATEX_ROOT}.pdf" "${LATEX_ROOT}-${TAG}.pdf"
+          gh release create "${TAG}" "${LATEX_ROOT}-${TAG}.pdf" \
+            --title "${TAG}" \
+            --notes "AMSBolognaFC Beamer template ${{ steps.get-version.outputs.version }}, released from ${GITHUB_SHA}."
