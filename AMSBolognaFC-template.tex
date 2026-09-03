@@ -25,7 +25,7 @@
 \newcommand{\templatemajor}{1}
 \newcommand{\templateminor}{7}
 % \templatepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\templatepatch}{10}
+\newcommand{\templatepatch}{11}
 \ifdefined\templatepatch
   \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 \else
@@ -332,7 +332,7 @@ This template's sources can be used as a simple example of how yo use this Beame
 \begin{itemize}
 	\item to be used instead of standard \texttt{\textbackslash{}url} command
 	\item[e.g.] \verb|\uurl{http://apice.unibo.it}| prints as \uurl{http://apice.unibo.it}
-	\item since style 1.7.5 no character in the address needs escaping, in these commands as in \texttt{\textbackslash{}ddoi} and \texttt{\textbackslash{}dddoi}
+	\item since style 1.7.5 no character in the address needs escaping
 \end{itemize}
 \end{block}
 %
@@ -340,6 +340,27 @@ This template's sources can be used as a simple example of how yo use this Beame
 \begin{itemize}
 	\item to be used instead of standard \texttt{\textbackslash{}url} command over dark backgrounds
 	\item[e.g.] see \verb|\uuurl{http://apice.unibo.it}| above in this \texttt{block} header
+\end{itemize}
+\end{block}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile]{DOI}
+%
+\begin{block}{\texttt{\textbackslash{}ddoi} command}
+\begin{itemize}
+	\item to be used for the styled DOI URLs
+	\item[e.g.] \verb|\ddoi{10.1007/978-3-032-22940-3}| prints as \ddoi{10.1007/978-3-032-22940-3} % chktex 8
+	\item[e.g.] since style 1.7.5 an underscore needs no escaping: \verb|\ddoi{10.1007/978-3-032-22940-3_12}| prints as \ddoi{10.1007/978-3-032-22940-3_12} % chktex 8
+\end{itemize}
+\end{block}
+%
+\begin{block}{\texttt{\textbackslash{}dddoi} command---e.g., \dddoi{10.1007/978-3-032-22940-3}} % chktex 8
+\begin{itemize}
+	\item to be used for the styled DOI URLs over dark backgrounds
+	\item[e.g.] see \verb|\dddoi{10.1007/978-3-032-22940-3}| above in this \texttt{block} header % chktex 8
 \end{itemize}
 \end{block}
 %
