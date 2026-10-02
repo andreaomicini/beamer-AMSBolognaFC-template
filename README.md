@@ -49,7 +49,7 @@ marker linking to the corresponding page of the
 }
 ```
 
-Drop the option and nothing else has to change: `\apicepar` is still defined,
+Drop the option and nothing else has to change: `\apicepubpar` is still defined,
 but expands to nothing, so the same `.bib` and the same slides keep working
 with the markers simply absent.
 
