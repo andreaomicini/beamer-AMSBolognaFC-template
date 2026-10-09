@@ -21,11 +21,13 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+% a colour swatch, framed so the pale ones still read against white
+\newcommand{\swatch}[1]{\fcolorbox{bolognafcsilver!70!black}{#1}{\rule{0pt}{1.3ex}\rule{2.2ex}{0pt}}}
 % version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\templatemajor}{1}
 \newcommand{\templateminor}{8}
 % \templatepatch is optional: comment the next line out to release as Major.Minor
-%\newcommand{\templatepatch}{0}
+\newcommand{\templatepatch}{1}
 \ifdefined\templatepatch
   \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 \else
@@ -39,10 +41,12 @@
 {AMS Series Templates}
 %
 \author[\sspeaker{Omicini} \and Else]
-{\speaker{Andrea Omicini} \and Nobody Else\\\href{mailto:andrea.omicini@unibo.it}{andrea.omicini@unibo.it} \and \href{mailto:nobody.else@unibo.it}{nobody.else@unibo.it}}
+{\speaker{Andrea Omicini} \and Someone Else}
 %
-\institute[DISI, Univ.\ Bologna]
-{Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna}
+\institute[DISI, Univ. Bologna]
+{\url{mailto:andrea.omicini@unibo.it} \qquad \url{mailto:someone.else@unibo.it}\\
+Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\
+\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna}
 %
 \date[v.\ \templateversion]{version \templateversion}
 %
@@ -104,6 +108,10 @@
 %
 \begin{description}
 	\item[AMS] Alma Mater Studiorum--Università di Bologna
+	\item[Bologna FC] Bologna Football Club 1909, the city's team
+	\begin{itemize}
+		\item hence the colours, the \textcolor{bolognafcred}{\textit{rosso}}\textcolor{bolognafcblue}{\textit{bl\`u}}
+	\end{itemize}
 	\item[Cesena] Campus of Cesena
 	\begin{itemize}
 		\item hence, this deck having asked for it, the \emph{Campus di Cesena} seal watermarking every slide
@@ -121,7 +129,11 @@
 	\item many different people in the group
 	\item a common reference could be useful
 	\item hence, this style
-	\item based on random Beamer styles, and using some references for the colours
+	\item in the colours of Bologna FC
+	\begin{itemize}
+		\item the same style as \alert{AMSUniBo} in everything else---options, commands, bibliography
+		\item but the faces, which stay \LaTeX{}'s own Computer Modern
+	\end{itemize}
 \end{itemize}
 %
 \end{frame}
@@ -139,50 +151,26 @@
 \end{frame}
 %/////////
 
-%===============================================================================
-\section{Use}
-%===============================================================================
-
 %/////////
-\begin{frame}[c,allowframebreaks]{Files}
+\begin{frame}[c]{Distribution}
 %
-\begin{block}{Getting the files}
-Every \href{https://github.com/andreaomicini/beamer-AMSBolognaFC/releases}{release} of the style attaches a \texttt{style.zip} holding everything needed
-\begin{itemize}
-	\item \texttt{beamerthemeAMSBolognaFC.sty}, \texttt{beamercolorthemebolognafc.sty}
-	\item \texttt{almabologna-background.pdf}, \texttt{almacesena-background.pdf}
-	\item \texttt{apalike-AMS.bst}
-	\item \texttt{LICENSE}
-\end{itemize}
-\end{block}
-%
-\begin{block}{Style files}
-The files
-\begin{itemize}
-	\item \texttt{beamercolorthemebolognafc.sty}
-	\item \texttt{beamerthemeAMSBolognaFC.sty}
-	\item \texttt{almabologna-background.pdf}
-	\item \texttt{almacesena-background.pdf}
-\end{itemize}
-should be placed either in the local folder with the main \texttt{.tex} file, or, in your Beamer system directory, e.g.
-\begin{itemize}
-	\item \texttt{/Users/\{username\}/Library/texmf/tex/latex/local/beamer/}
-\end{itemize}
-\end{block}
-%
-\begin{block}{BST files}
-The files
-\begin{itemize}
-	\item \texttt{apalike-AMS.bst}
-\end{itemize}
-should be placed either in the local folder with the main \texttt{.tex} file, or, in your Beamer system directory, e.g.
-\begin{itemize}
-	\item \texttt{/Users/\{username\}/Library/texmf/bibtex/bst/local/}
-\end{itemize}
+\begin{block}{Public on GitHub}
+	\begin{itemize}
+		\item the style is distributed on \url{https://github.com/andreaomicini/beamer-AMSBolognaFC/}
+		\item the releases are available at \url{https://github.com/andreaomicini/beamer-AMSBolognaFC/releases}
+		\begin{itemize}
+			\item each attaching a \texttt{style.zip} that holds everything needed to typeset
+		\end{itemize}
+		\item this template is distributed on \url{https://github.com/andreaomicini/beamer-AMSBolognaFC-template/}
+	\end{itemize}
 \end{block}
 %
 \end{frame}
 %/////////
+
+%===============================================================================
+\section{Use}
+%===============================================================================
 
 %/////////
 \begin{frame}[c,fragile]{Declaration}
@@ -195,7 +183,7 @@ Your main Beamer \texttt{.tex} file should open with the declaration
         \mode<presentation>{\usetheme{AMSBolognaFC}}
 \end{verbatim}
 %
-so as to use the AMS Bologna FC Beamer style 
+so as to use the AMSBolognaFC Beamer style
 \end{block}
 %
 \end{frame}
@@ -208,8 +196,8 @@ so as to use the AMS Bologna FC Beamer style
 Your main Beamer \texttt{.tex} file should include the declaration
 \begin{verbatim}
     \bibliographystyle{apalike-AMS}
-\end{verbatim}	
-so as to use the AMS Bologna FC \BibTeX{} style 
+\end{verbatim}
+so as to use the AMSBolognaFC \BibTeX{} style
 \end{block}
 %
 \end{frame}
@@ -219,7 +207,7 @@ so as to use the AMS Bologna FC \BibTeX{} style
 \begin{frame}[c,fragile]{Template}
 %
 \begin{block}{\texttt{AMSBolognaFC-template.tex}}
-This template's sources can be used as a simple example of how yo use this Beamer style
+This template's sources can be used as a simple example of how to use this Beamer style
 \end{block}
 %
 \end{frame}
@@ -231,33 +219,28 @@ This template's sources can be used as a simple example of how yo use this Beame
 %===============================================================================
 
 %/////////
-\begin{frame}[c,allowframebreaks]{Colours for AMS Bologna FC}
+\begin{frame}[c,fragile]{Colours}
 %
-\begin{exampleblock}{\texttt{\textcolor{bolognafcblue}{bolognafcblue}}}
-	\begin{description}
-		\item[HEX] \texttt{\#1A2F48}
-		\item[RGB] \texttt{26,47,72}
-	\end{description}
+The palette is Bologna FC's, and every colour has its own role:
+\textcolor{bolognafcblue}{\textit{blue}} structures, \textcolor{bolognafcred}{\textit{red}} marks,
+\textcolor{bolognafcsilver!70!black}{\textit{silver}} reads over the dark surfaces
+%
+\begin{exampleblock}{The four that carry the style}
+\footnotesize
+\begin{tabular}{@{}llll@{}}
+\swatch{bolognafcblue}   & \texttt{bolognafcblue}   & \texttt{\#1A2F48} & text, title, block headers, emphasis, \textsc{toc} \\
+\swatch{bolognafcred}    & \texttt{bolognafcred}    & \texttt{\#A21C26} & author, bullets, alerts, links \\
+\swatch{bolognafcsilver} & \texttt{bolognafcsilver} & \texttt{\#ECECEC} & over dark: header titles, \texttt{\textbackslash{}ccite}, \texttt{\textbackslash{}aalert} \\
+\swatch{bolognafcwhite}  & \texttt{bolognafcwhite}  & \texttt{\#FFFFFF} & the background \\
+\end{tabular}
 \end{exampleblock}
-\begin{exampleblock}{\texttt{\textcolor{bolognafcred}{bolognafcred}}}
-	\begin{description}
-		\item[HEX] \texttt{\#A21C26}
-		\item[RGB] \texttt{162,28,38}
-	\end{description}
-\end{exampleblock}
-\framebreak
-\begin{block}{\texttt{\textcolor{bolognafcwhite}{bolognafcwhite}}}
-	\begin{description}
-		\item[HEX] \texttt{\#FFFFFF}
-		\item[RGB] \texttt{255,255,255}
-	\end{description}
-\end{block}
-\begin{alertblock}{\texttt{\textcolor{bolognafcsilver}{bolognafcsilver}}}
-	\begin{description}
-		\item[HEX] \texttt{\#ECECEC}
-		\item[RGB] \texttt{236,236,236}
-	\end{description}
-\end{alertblock}
+%
+\begin{itemize}
+	\item all four are defined by \texttt{beamercolorthemebolognafc.sty}, which the theme loads
+	\begin{itemize}
+		\item so a deck can use them as any other colour, as in \verb|\textcolor{bolognafcred}{...}|
+	\end{itemize}
+\end{itemize}
 %
 \end{frame}
 %/////////
@@ -390,11 +373,12 @@ This template's sources can be used as a simple example of how yo use this Beame
 %/////////
 
 %/////////
-\begin{frame}[c,fragile,allowframebreaks]{Speaker(s) \emph{vs.} Authors}
+\begin{frame}[c,fragile,allowframebreaks]{Speakers \emph{vs.} Authors}
 %
 \begin{exampleblock}{\texttt{\textbackslash{}speaker} command--e.g., \speaker{Diego Zorro}}
 \begin{itemize}
 	\item to be used within \texttt{\textbackslash{}author} standard Beamer command to single out the actual speaker among the authors
+	\item in bold, and in a colour of its own
 	\item[e.g.] as in
 \begin{verbatim}
 	\author[Garcia \and Zorro]
@@ -407,6 +391,7 @@ This template's sources can be used as a simple example of how yo use this Beame
 \begin{block}{\texttt{\textbackslash{}sspeaker} command--e.g., \sspeaker{Diego Zorro}}
 \begin{itemize}
 	\item to be used within \texttt{\textbackslash{}author} standard Beamer command to single out the actual speaker among the authors in the short form
+	\item in bold, and in the colour of the surface it sits on---light on the footline, as below
 	\item[e.g.] as in
 \begin{verbatim}
 	\author[Garcia \and \sspeaker{Zorro}]
