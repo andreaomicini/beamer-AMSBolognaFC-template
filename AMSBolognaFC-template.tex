@@ -27,8 +27,8 @@
 \newcommand{\templatemajor}{1}
 \newcommand{\templateminor}{8}
 % \templatepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\templatepatch}{2}
-\ifdefined\templatepatch
+\newcommand{\templatepatch}{3}
+\ifdefined\templatepatch{}
   \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 \else
   \newcommand{\templateversion}{\templatemajor.\templateminor}
@@ -45,8 +45,8 @@
 %
 \institute[DISI, Univ. Bologna]
 {\url{mailto:andrea.omicini@unibo.it} \qquad \url{mailto:someone.else@unibo.it}\\
-Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\
-\textsc{Alma Mater Studiorum} -- Universit{\`a} di Bologna}
+Dipartimento di Informatica \textendash{} Scienza e Ingegneria (DISI)\\
+\textsc{Alma Mater Studiorum} \textendash{} Università di Bologna}
 %
 \date[v.\ \templateversion]{version \templateversion}
 %
@@ -156,9 +156,9 @@ Dipartimento di Informatica -- Scienza e Ingegneria (DISI)\\
 %
 \begin{block}{Public on GitHub}
 	\begin{itemize}
-		\item the style is distributed on \url{https://github.com/andreaomicini/beamer-AMSBolognaFC/}
-		\item the releases are available at \url{https://github.com/andreaomicini/beamer-AMSBolognaFC/releases}
-		\item this template is distributed on \url{https://github.com/andreaomicini/beamer-AMSBolognaFC-template/}
+		\item the style is distributed on \uurl{https://github.com/andreaomicini/beamer-AMSBolognaFC/}
+		\item the releases are available at \uurl{https://github.com/andreaomicini/beamer-AMSBolognaFC/releases}
+		\item this template is distributed on \uurl{https://github.com/andreaomicini/beamer-AMSBolognaFC-template/}
 	\end{itemize}
 \end{block}
 %
@@ -372,7 +372,7 @@ The palette is Bologna FC's, and every colour has its own role:
 %/////////
 \begin{frame}[c,fragile,allowframebreaks]{Speakers \emph{vs.} Authors}
 %
-\begin{exampleblock}{\texttt{\textbackslash{}speaker} command--e.g., \speaker{Diego Zorro}}
+\begin{exampleblock}{\texttt{\textbackslash{}speaker} command---e.g., \speaker{Diego Zorro}}
 \begin{itemize}
 	\item to be used within \texttt{\textbackslash{}author} standard Beamer command to single out the actual speaker among the authors
 	\item in bold, and in a colour of its own
@@ -385,7 +385,7 @@ The palette is Bologna FC's, and every colour has its own role:
 \end{itemize}
 \end{exampleblock}
 %
-\begin{block}{\texttt{\textbackslash{}sspeaker} command--e.g., \sspeaker{Diego Zorro}}
+\begin{block}{\texttt{\textbackslash{}sspeaker} command---e.g., \sspeaker{Diego Zorro}}
 \begin{itemize}
 	\item to be used within \texttt{\textbackslash{}author} standard Beamer command to single out the actual speaker among the authors in the short form
 	\item in bold, and in the colour of the surface it sits on---light on the footline, as below
@@ -434,7 +434,6 @@ The following \BibTeX{} entry in the \texttt{.bib} file with the \texttt{apice} 
     apice = {BibtexPatashnik88},
     author = {Patashnik, Oren},
     booktitle = {\BibTeXing},
-    month = {8~} # feb,
     organization = {CTAN, The Comprehensive TeX Archive Network},
     title = {\BibTeX{}ing},
     url = {https://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf},
@@ -445,10 +444,10 @@ would translate into the following entry in the presentation bibliography
 %
 \begin{thebibliography}{}
 \bibitem[Patashnik, 1988]{bibtex-patashnik1988}
-Patashnik, O. (1988).
-\\[-0.1em] {\em \BibTeX{}ing}.
-\\[-0.0em] CTAN, The Comprehensive TeX Archive Network
-\\[-0.4em] \apicepubpar{BibtexPatashnik88} \uuurl{https://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf}.
+Patashnik, O. (1988)
+\newblock {\bfseries {\em \BibTeX{}ing}}
+\newblock CTAN, The Comprehensive TeX Archive Network
+\newblock\apicepubpar{BibtexPatashnik88} \uuurl{https://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf}
 \end{thebibliography}
 %
 \end{exampleblock}
@@ -479,10 +478,10 @@ Patashnik, O. (1988).
 \end{alertblock}
 %
 \begin{exampleblock}{Example}
-\begin{verbatim}
+{\footnotesize\begin{verbatim}
 \documentclass[presentation,cesena]{beamer}
     \mode<presentation>{\usetheme{AMSBolognaFC}}
-\end{verbatim}
+\end{verbatim}} %chktex 31
 \end{exampleblock}
 %
 \end{frame}
