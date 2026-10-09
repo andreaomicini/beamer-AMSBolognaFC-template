@@ -11,7 +11,7 @@
 % The AMSBolognaFC style it uses is covered by its own licence (LPPL 1.3c):
 % https://github.com/andreaomicini/beamer-AMSBolognaFC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[presentation,apice]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
+\documentclass[presentation,cesena,apice]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
 %\documentclass[presentation]{beamer}\mode<presentation>{\usetheme{AMSBolognaFC}}
 %\documentclass[handout]{beamer}\mode<handout>{\usetheme{AMSBolognaFC}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,9 +23,9 @@
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 % version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\templatemajor}{1}
-\newcommand{\templateminor}{7}
+\newcommand{\templateminor}{8}
 % \templatepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\templatepatch}{14}
+%\newcommand{\templatepatch}{0}
 \ifdefined\templatepatch
   \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 \else
@@ -71,7 +71,7 @@
 %
 \begin{itemize}
 	\item technical presentations are common in the academic environment
-	\item \alert{\LaTeX{}}\footnote{\uurl{http://latex.org}} is typically used for scientific literature
+	\item \alert{\LaTeX{}}\footnote{\uurl{https://www.latex-project.org}} is typically used for scientific literature
 	\begin{itemize}
 		\item for better formulas, bibliography, typography, \ldots
 	\end{itemize}
@@ -106,7 +106,7 @@
 	\item[AMS] Alma Mater Studiorum--Università di Bologna
 	\item[Cesena] Campus of Cesena
 	\begin{itemize}
-		\item hence the AMS Cesena Campus logo on the bottom-left corner
+		\item hence, this deck having asked for it, the \emph{Campus di Cesena} seal watermarking every slide
 	\end{itemize}
 \end{description}
 %
@@ -150,7 +150,7 @@
 Every \href{https://github.com/andreaomicini/beamer-AMSBolognaFC/releases}{release} of the style attaches a \texttt{style.zip} holding everything needed
 \begin{itemize}
 	\item \texttt{beamerthemeAMSBolognaFC.sty}, \texttt{beamercolorthemebolognafc.sty}
-	\item \texttt{almacesena-background.pdf}
+	\item \texttt{almabologna-background.pdf}, \texttt{almacesena-background.pdf}
 	\item \texttt{apalike-AMS.bst}
 	\item \texttt{LICENSE}
 \end{itemize}
@@ -161,6 +161,7 @@ The files
 \begin{itemize}
 	\item \texttt{beamercolorthemebolognafc.sty}
 	\item \texttt{beamerthemeAMSBolognaFC.sty}
+	\item \texttt{almabologna-background.pdf}
 	\item \texttt{almacesena-background.pdf}
 \end{itemize}
 should be placed either in the local folder with the main \texttt{.tex} file, or, in your Beamer system directory, e.g.
@@ -266,7 +267,7 @@ This template's sources can be used as a simple example of how yo use this Beame
 %
 \begin{block}{This is a \texttt{block} environment}
 \begin{verbatim}
-\begin{block}
+\begin{block}{...}
 ...
 \end{block}
 \end{verbatim}
@@ -274,7 +275,7 @@ This template's sources can be used as a simple example of how yo use this Beame
 %
 \begin{exampleblock}{This is an \texttt{exampleblock} environment}
 \begin{verbatim}
-\begin{exampleblock}
+\begin{exampleblock}{...}
 ...
 \end{exampleblock}
 \end{verbatim}
@@ -282,7 +283,7 @@ This template's sources can be used as a simple example of how yo use this Beame
 %
 \begin{alertblock}{This is an \texttt{alertblock} environment}
 \begin{verbatim}
-\begin{alertblock}
+\begin{alertblock}{...}
 ...
 \end{alertblock}
 \end{verbatim}
@@ -298,29 +299,37 @@ This template's sources can be used as a simple example of how yo use this Beame
 %/////////
 \begin{frame}[c,allowframebreaks,fragile]{Citations}
 %
-\begin{alertblock}{\texttt{\textbackslash{}ccite} command---e.g., \ccite{bibtex-patashnik88}}
+\begin{block}{\texttt{\textbackslash{}ccite} command---e.g., \ccite{bibtex-patashnik88}}
 \begin{verbatim}
 \ccite{bibtex-patashnik88}
 \end{verbatim}
 \begin{itemize}
 	\item to be used instead of standard \texttt{\textbackslash{}cite} command
-	\item prints as \ccite{bibtex-patashnik88}
-	\item can be used as a note\ccite{bibtex-patashnik88}, with no space before
+	\item light, for the dark surfaces a citation marker usually sits on
+	\begin{itemize}
+		\item as here above in the \texttt{block} header
+	\end{itemize}
+	\item can be used as a note\ccite{bibtex-patashnik88}, with no space before---faint in running text, by design
+	\item since style 1.8 it takes the optional note of \texttt{\textbackslash{}cite}\ccite[p.~42]{bibtex-patashnik88}
+	\begin{itemize}
+		\item as here above, from \verb|\ccite[p.~42]{bibtex-patashnik88}|
+	\end{itemize}
 \end{itemize}
-\end{alertblock}
+\end{block}
 %
-\begin{exampleblock}{\texttt{\textbackslash{}cccite} command---e.g., \cccite{bibtex-patashnik88}}
+\begin{alertblock}{\texttt{\textbackslash{}cccite} command---e.g., \cccite{bibtex-patashnik88}}
 \begin{verbatim}
 \cccite{bibtex-patashnik88}
 \end{verbatim}
 \begin{itemize}
-	\item a lighter version of the \texttt{\textbackslash{}ccite} command over non-dark, non-light backgrounds
+	\item the lighter of the two, for the loudest surfaces
 	\begin{itemize}
-		\item as here above in \texttt{examplebox} header
+		\item as here above in the \texttt{alertblock} header
 	\end{itemize}
 	\item can be used as a note with no space before, in the same way as \texttt{\textbackslash{}ccite}
+	\item takes the optional note in the same way\cccite[p.~42]{bibtex-patashnik88}
 \end{itemize}
-\end{exampleblock}
+\end{alertblock}
 %
 \end{frame}
 %/////////
@@ -331,15 +340,15 @@ This template's sources can be used as a simple example of how yo use this Beame
 \begin{block}{\texttt{\textbackslash{}uurl} command}
 \begin{itemize}
 	\item to be used instead of standard \texttt{\textbackslash{}url} command
-	\item[e.g.] \verb|\uurl{http://apice.unibo.it}| prints as \uurl{http://apice.unibo.it}
+	\item[e.g.] \verb|\uurl{https://apice.unibo.it}| prints as \uurl{https://apice.unibo.it}
 	\item since style 1.7.5 no character in the address needs escaping
 \end{itemize}
 \end{block}
 %
-\begin{block}{\texttt{\textbackslash{}uuurl} command---e.g., \uuurl{http://apice.unibo.it}}
+\begin{block}{\texttt{\textbackslash{}uuurl} command---e.g., \uuurl{https://apice.unibo.it}}
 \begin{itemize}
 	\item to be used instead of standard \texttt{\textbackslash{}url} command over dark backgrounds
-	\item[e.g.] see \verb|\uuurl{http://apice.unibo.it}| above in this \texttt{block} header
+	\item[e.g.] see \verb|\uuurl{https://apice.unibo.it}| above in this \texttt{block} header
 \end{itemize}
 \end{block}
 %
@@ -357,10 +366,10 @@ This template's sources can be used as a simple example of how yo use this Beame
 \end{itemize}
 \end{block}
 %
-\begin{block}{\texttt{\textbackslash{}dddoi} command---e.g., \dddoi{10.1007/978-3-032-22940-3}} % chktex 8
+\begin{block}{\texttt{\textbackslash{}dddoi} command}
 \begin{itemize}
-	\item to be used for the styled DOI URLs over dark backgrounds
-	\item[e.g.] see \verb|\dddoi{10.1007/978-3-032-22940-3}| above in this \texttt{block} header % chktex 8
+	\item to be used for the styled DOI URLs
+	\item[e.g.] \verb|\dddoi{10.1007/978-3-032-22940-3}| prints as \dddoi{10.1007/978-3-032-22940-3} % chktex 8
 \end{itemize}
 \end{block}
 %
@@ -428,9 +437,9 @@ This template's sources can be used as a simple example of how yo use this Beame
 	\end{itemize}
 	\item enables the display of the \BibTeX{} field \texttt{apice}
 	\begin{itemize}
-		\item containing the relative URL of the publication on the \alert{\href{http://apice.unibo.it/}{\textsf{APICe}}} Wiki
+		\item containing the relative URL of the publication on the \alert{\href{https://apice.unibo.it/}{\textsf{APICe}}} XWiki
 	\end{itemize}
-	\item properly linked to the corresponding \href{http://apice.unibo.it/}{\textsf{APICe}} page
+	\item properly linked to the corresponding \href{https://apice.unibo.it/}{\textsf{APICe}} page
 \end{itemize}
 \end{alertblock}
 %
@@ -446,20 +455,52 @@ The following \BibTeX{} entry in the \texttt{.bib} file with the \texttt{apice} 
     month = {8~} # feb,
     organization = {CTAN, The Comprehensive TeX Archive Network},
     title = {\BibTeX{}ing},
-    url = {http://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf},
+    url = {https://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf},
     year = 1988}
-\end{verbatim}}
+\end{verbatim}} %chktex 31
 %
 would translate into the following entry in the presentation bibliography
 %
 \begin{thebibliography}{}
-\bibitem[Patashnik, 1988]{bibtex-patashnik88}
+\bibitem[Patashnik, 1988]{bibtex-patashnik1988}
 Patashnik, O. (1988).
 \\[-0.1em] {\em \BibTeX{}ing}.
 \\[-0.0em] CTAN, The Comprehensive TeX Archive Network
-\\[-0.4em] \apicepubpar{BibtexPatashnik88} \uuurl{http://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf}.
+\\[-0.4em] \apicepubpar{BibtexPatashnik88} \uuurl{https://mirrors.ctan.org/biblio/bibtex/base/btxdoc.pdf}.
 \end{thebibliography}
 %
+\end{exampleblock}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile]{\texttt{bologna}, \texttt{cesena} options}
+%
+\begin{alertblock}{Which seal watermarks the slides---none, unless asked for}
+\begin{itemize}
+	\item \texttt{bologna}---the seal of the \emph{Alma Mater Studiorum} as a whole
+	\item \texttt{cesena}---the seal of the \emph{Campus di Cesena}
+	\begin{itemize}
+		\item the two are told apart by the border, solid for the Campus and an outline for the Ateneo
+	\end{itemize}
+	\item both sit in the lower-right corner, cropped by the page edge
+	\begin{itemize}
+		\item the one on this very slide is the one this deck selected
+	\end{itemize}
+	\item \alert{neither option, no seal}---the slides stay bare
+	\begin{itemize}
+		\item the seals are institutional marks, so a deck claims one out loud
+		\item which leaves the style free to use for whoever does not belong---or no longer, or not yet belongs---to the \emph{Alma Mater}
+	\end{itemize}
+\end{itemize}
+\end{alertblock}
+%
+\begin{exampleblock}{Example}
+\begin{verbatim}
+\documentclass[presentation,cesena]{beamer}
+    \mode<presentation>{\usetheme{AMSBolognaFC}}
+\end{verbatim}
 \end{exampleblock}
 %
 \end{frame}
