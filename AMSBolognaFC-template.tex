@@ -27,7 +27,7 @@
 \newcommand{\templatemajor}{1}
 \newcommand{\templateminor}{8}
 % \templatepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\templatepatch}{4}
+\newcommand{\templatepatch}{5}
 \ifdefined\templatepatch{}
   \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 \else
@@ -307,8 +307,17 @@ The palette is Bologna FC's, and every colour has its own role:
 		\item as here above in the \texttt{alertblock} header
 	\end{itemize}
 	\item can be used as a note with no space before, in the same way as \texttt{\textbackslash{}ccite}
-	\item takes the optional note in the same way\cccite[p.~42]{bibtex-patashnik88}
+	\item takes the optional note in the same way, as in \verb|\cccite[p.~42]{bibtex-patashnik88}|
+	\begin{itemize}
+		\item as below in the \texttt{alertblock} header
+	\end{itemize}
 \end{itemize}
+\end{alertblock}
+%
+\begin{alertblock}{\texttt{\textbackslash{}cccite} with a note---e.g., \cccite[p.~42]{bibtex-patashnik88}}
+\begin{verbatim}
+\cccite[p.~42]{bibtex-patashnik88}
+\end{verbatim}
 \end{alertblock}
 %
 \end{frame}
