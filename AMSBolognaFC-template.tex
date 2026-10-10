@@ -22,9 +22,9 @@
 \newcommand{\swatch}[1]{\fcolorbox{bolognafcsilver!70!black}{#1}{\rule{0pt}{1.3ex}\rule{2.2ex}{0pt}}}
 % version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\templatemajor}{1}
-\newcommand{\templateminor}{8}
+\newcommand{\templateminor}{9}
 % \templatepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\templatepatch}{6}
+%\newcommand{\templatepatch}{0}
 \ifdefined\templatepatch{}
   \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 \else
@@ -355,6 +355,32 @@ The palette is Bologna FC's, and every colour has its own role:
 \begin{itemize}
 	\item to be used for the styled DOI URLs
 	\item[e.g.] \verb|\dddoi{10.1007/978-3-032-22940-3}| prints as \dddoi{10.1007/978-3-032-22940-3} % chktex 8
+\end{itemize}
+\end{block}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile]{APICe Addresses}
+%
+\begin{block}{\texttt{\textbackslash{}apice} command\textemdash{}an object, by its kind and its page name}
+\begin{itemize}
+	\item[e.g.] \verb|\apice{pub}{AcltFrocos1996}| prints as \apice{pub}{AcltFrocos1996}
+	\item[e.g.] \verb|\apice[the AGoT talk]{talk}{AgotAixia2026}| prints as \apice[the AGoT talk]{talk}{AgotAixia2026}
+\end{itemize}
+\end{block}
+%
+\begin{block}{\texttt{\textbackslash{}apicesite} and \texttt{\textbackslash{}apicepage} commands}
+\begin{itemize}
+	\item[e.g.] \verb|\apicesite{andreaomicini}| prints as \apicesite{andreaomicini}
+	\item[e.g.] \verb|\apicepage{Courses/Series/Iag}| prints as \apicepage{Courses/Series/Iag}
+\end{itemize}
+\end{block}
+%
+\begin{block}{\texttt{\textbackslash{}aapice} and the other doubled forms\textemdash{}e.g., \aapice{course}{Iag2627}}
+\begin{itemize}
+	\item for dark backgrounds, as \verb|\aapice{course}{Iag2627}| in this header; all six since style 1.9
 \end{itemize}
 \end{block}
 %
