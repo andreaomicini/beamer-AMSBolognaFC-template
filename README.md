@@ -1,5 +1,7 @@
 # beamer-AMSBolognaFC-template
 
+![AMSBolognaFC Beamer template logo](logo/amsbolognafc-template-full.svg)
+
 > A ready-to-use presentation skeleton for the
 > [AMSBolognaFC Beamer style](https://github.com/andreaomicini/beamer-AMSBolognaFC)
 
