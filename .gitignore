@@ -276,3 +276,5 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+## Finder's custom folder icon: empty data fork, the picture is in icon/beamer-AMSBolognaFC-template.icns.
+Icon?
