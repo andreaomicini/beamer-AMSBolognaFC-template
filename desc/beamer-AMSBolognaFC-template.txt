@@ -1,1 +1,1 @@
-Usage template for Beamer style “AMSBolognaFC”
+Template for the "AMSBolognaFC" Beamer style
