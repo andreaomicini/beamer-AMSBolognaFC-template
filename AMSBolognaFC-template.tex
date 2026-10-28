@@ -22,9 +22,9 @@
 \newcommand{\swatch}[1]{\fcolorbox{bolognafcsilver!70!black}{#1}{\rule{0pt}{1.3ex}\rule{2.2ex}{0pt}}}
 % version -- Major.Minor[.Patch]; the release time-stamp is appended by the CI
 \newcommand{\templatemajor}{1}
-\newcommand{\templateminor}{9}
+\newcommand{\templateminor}{10}
 % \templatepatch is optional: comment the next line out to release as Major.Minor
-\newcommand{\templatepatch}{1}
+%\newcommand{\templatepatch}{0}
 \ifdefined\templatepatch{}
   \newcommand{\templateversion}{\templatemajor.\templateminor.\templatepatch}
 \else
@@ -268,6 +268,52 @@ The palette is Bologna FC's, and every colour has its own role:
 \end{frame}
 %/////////
 
+%/////////
+\begin{frame}[c]{Surfaces}
+%
+\begin{itemize}
+	\item the headers of \texttt{block} and \texttt{alertblock} are \emph{dark} surfaces
+	\item everything else is \emph{light}\textemdash{}running text, block bodies, the \texttt{exampleblock} header
+	\item since style 1.11, the commands of this style take their colour from the surface they land on
+	\begin{itemize}
+		\item so a deck never picks a command for its background
+	\end{itemize}
+	\item a doubled command is the same command, \alert{smaller and quieter}
+	\begin{itemize}
+		\item \texttt{\textbackslash{}uurl} and \texttt{\textbackslash{}uuurl}, \texttt{\textbackslash{}ddoi} and \texttt{\textbackslash{}dddoi}, \texttt{\textbackslash{}apice} and \texttt{\textbackslash{}aapice}, \ldots
+	\end{itemize}
+	\item \texttt{\textbackslash{}emph} and \texttt{\textbackslash{}alert} read on every surface, block headers included
+\end{itemize}
+%
+\end{frame}
+%/////////
+
+%/////////
+\begin{frame}[c,fragile]{One Command, Every Surface}
+%
+The same source line, here and in each header and body below:\\
+\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88}, \uurl{apice.unibo.it}, \uuurl{apice.unibo.it}
+%
+\begin{block}{\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88}, \uurl{apice.unibo.it}, \uuurl{apice.unibo.it}}
+\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88}, \uurl{apice.unibo.it}, \uuurl{apice.unibo.it}
+\end{block}
+%
+\begin{alertblock}{\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88}, \uurl{apice.unibo.it}, \uuurl{apice.unibo.it}}
+\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88}, \uurl{apice.unibo.it}, \uuurl{apice.unibo.it}
+\end{alertblock}
+%
+\begin{exampleblock}{\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88}, \uurl{apice.unibo.it}, \uuurl{apice.unibo.it}}
+\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88}, \uurl{apice.unibo.it}, \uuurl{apice.unibo.it}
+\end{exampleblock}
+%
+{\tiny\begin{verbatim}
+\emph{emph}, \alert{alert}, \aalert{aalert}\ccite{bibtex-patashnik88},
+\uurl{apice.unibo.it}, \uuurl{apice.unibo.it}
+\end{verbatim}} %chktex 31
+%
+\end{frame}
+%/////////
+
 %===============================================================================
 \section{New Commands}
 %===============================================================================
@@ -275,17 +321,14 @@ The palette is Bologna FC's, and every colour has its own role:
 %/////////
 \begin{frame}[c,allowframebreaks,fragile]{Citations}
 %
-\begin{block}{\texttt{\textbackslash{}ccite} command---e.g., \ccite{bibtex-patashnik88}}
+\begin{block}{\texttt{\textbackslash{}ccite} command\textemdash{}e.g., \ccite{bibtex-patashnik88}}
 \begin{verbatim}
 \ccite{bibtex-patashnik88}
 \end{verbatim}
 \begin{itemize}
 	\item to be used instead of standard \texttt{\textbackslash{}cite} command
-	\item light, for the dark surfaces a citation marker usually sits on
-	\begin{itemize}
-		\item as here above in the \texttt{block} header
-	\end{itemize}
-	\item can be used as a note\ccite{bibtex-patashnik88}, with no space before---faint in running text, by design
+	\item its colour comes from the surface: light on a dark header, as here above
+	\item can be used as a note\ccite{bibtex-patashnik88}, with no space before\textemdash{}faint in running text, by design
 	\item since style 1.8 it takes the optional note of \texttt{\textbackslash{}cite}\ccite[p.~42]{bibtex-patashnik88}
 	\begin{itemize}
 		\item as here above, from \verb|\ccite[p.~42]{bibtex-patashnik88}|
@@ -293,27 +336,20 @@ The palette is Bologna FC's, and every colour has its own role:
 \end{itemize}
 \end{block}
 %
-\begin{alertblock}{\texttt{\textbackslash{}cccite} command---e.g., \cccite{bibtex-patashnik88}}
-\begin{verbatim}
-\cccite{bibtex-patashnik88}
-\end{verbatim}
+\begin{exampleblock}{\texttt{\textbackslash{}ccite} in an \texttt{exampleblock} header\textemdash{}e.g., \ccite[p.~42]{bibtex-patashnik88}}
 \begin{itemize}
-	\item the lighter of the two, for the loudest surfaces
+	\item darker on the tinted header, so that it still reads
+\end{itemize}
+\end{exampleblock}
+%
+\begin{alertblock}{\texttt{\textbackslash{}cccite} command\textemdash{}e.g., \cccite{bibtex-patashnik88}}
+\begin{itemize}
+	\item since style 1.11 the same as \texttt{\textbackslash{}ccite}
 	\begin{itemize}
-		\item as here above in the \texttt{alertblock} header
-	\end{itemize}
-	\item can be used as a note with no space before, in the same way as \texttt{\textbackslash{}ccite}
-	\item takes the optional note in the same way, as in \verb|\cccite[p.~42]{bibtex-patashnik88}|
-	\begin{itemize}
-		\item as below in the \texttt{alertblock} header
+		\item a citation marker is already as small as it can be read
+		\item kept so that existing decks build as before
 	\end{itemize}
 \end{itemize}
-\end{alertblock}
-%
-\begin{alertblock}{\texttt{\textbackslash{}cccite} with a note---e.g., \cccite[p.~42]{bibtex-patashnik88}}
-\begin{verbatim}
-\cccite[p.~42]{bibtex-patashnik88}
-\end{verbatim}
 \end{alertblock}
 %
 \end{frame}
@@ -322,18 +358,20 @@ The palette is Bologna FC's, and every colour has its own role:
 %/////////
 \begin{frame}[c,fragile]{URLs}
 %
-\begin{block}{\texttt{\textbackslash{}uurl} command}
+\begin{block}{\texttt{\textbackslash{}uurl} command\textemdash{}e.g., \uurl{https://apice.unibo.it}}
 \begin{itemize}
 	\item to be used instead of standard \texttt{\textbackslash{}url} command
 	\item[e.g.] \verb|\uurl{https://apice.unibo.it}| prints as \uurl{https://apice.unibo.it}
+	\item[] and as in this header, light on a dark surface
 	\item since style 1.7.5 no character in the address needs escaping
 \end{itemize}
 \end{block}
 %
-\begin{block}{\texttt{\textbackslash{}uuurl} command---e.g., \uuurl{https://apice.unibo.it}}
+\begin{block}{\texttt{\textbackslash{}uuurl} command\textemdash{}e.g., \uuurl{https://apice.unibo.it}}
 \begin{itemize}
-	\item to be used instead of standard \texttt{\textbackslash{}url} command over dark backgrounds
-	\item[e.g.] see \verb|\uuurl{https://apice.unibo.it}| above in this \texttt{block} header
+	\item the same, smaller and quieter
+	\item[e.g.] \verb|\uuurl{https://apice.unibo.it}| prints as \uuurl{https://apice.unibo.it}
+	\item[] and as in this header
 \end{itemize}
 \end{block}
 %
@@ -343,17 +381,17 @@ The palette is Bologna FC's, and every colour has its own role:
 %/////////
 \begin{frame}[c,fragile]{DOI}
 %
-\begin{block}{\texttt{\textbackslash{}ddoi} command}
+\begin{block}{\texttt{\textbackslash{}ddoi} command\textemdash{}e.g., \ddoi{10.1007/978-3-032-22940-3}} % chktex 8
 \begin{itemize}
-	\item to be used for the styled DOI URLs
+	\item to be used for the styled, linked DOIs
 	\item[e.g.] \verb|\ddoi{10.1007/978-3-032-22940-3}| prints as \ddoi{10.1007/978-3-032-22940-3} % chktex 8
 	\item[e.g.] since style 1.7.5 an underscore needs no escaping: \verb|\ddoi{10.1007/978-3-032-22940-3_12}| prints as \ddoi{10.1007/978-3-032-22940-3_12} % chktex 8
 \end{itemize}
 \end{block}
 %
-\begin{block}{\texttt{\textbackslash{}dddoi} command}
+\begin{block}{\texttt{\textbackslash{}dddoi} command\textemdash{}e.g., \dddoi{10.1007/978-3-032-22940-3}} % chktex 8
 \begin{itemize}
-	\item to be used for the styled DOI URLs
+	\item the same, smaller and quieter\textemdash{}as in the references
 	\item[e.g.] \verb|\dddoi{10.1007/978-3-032-22940-3}| prints as \dddoi{10.1007/978-3-032-22940-3} % chktex 8
 \end{itemize}
 \end{block}
@@ -380,7 +418,7 @@ The palette is Bologna FC's, and every colour has its own role:
 %
 \begin{block}{\texttt{\textbackslash{}aapice} and the other doubled forms\textemdash{}e.g., \aapice{course}{Iag2627}}
 \begin{itemize}
-	\item for dark backgrounds, as \verb|\aapice{course}{Iag2627}| in this header; all six since style 1.9
+	\item the same, smaller and quieter, as \verb|\aapice{course}{Iag2627}| in this header; all six since style 1.9
 \end{itemize}
 \end{block}
 %
@@ -388,12 +426,22 @@ The palette is Bologna FC's, and every colour has its own role:
 %/////////
 
 %/////////
-\begin{frame}[c,fragile]{Alert}
+\begin{frame}[c,fragile]{Alert \& Emphasis}
 %
-\begin{block}{\texttt{\textbackslash{}aalert} command---e.g., \aalert{alerted text}}
+\begin{block}{\texttt{\textbackslash{}alert} and \texttt{\textbackslash{}emph} in a header\textemdash{}e.g., \alert{alerted} and \emph{emphasised} text}
 \begin{itemize}
-	\item to be used instead of standard \texttt{\textbackslash{}alert} command over dark backgrounds
-	\item[e.g.] see \verb|\aalert{alerted text}| above in this \texttt{block} header
+	\item both read on every surface: \texttt{\textbackslash{}alert} since style 1.11, \texttt{\textbackslash{}emph} since 1.10.1
+	\begin{itemize}
+		\item in a header, \texttt{\textbackslash{}emph} is italic in the header's own colour
+	\end{itemize}
+	\item[e.g.] \verb|\alert{alerted} and \emph{emphasised} text| prints as \alert{alerted} and \emph{emphasised} text
+\end{itemize}
+\end{block}
+%
+\begin{block}{\texttt{\textbackslash{}aalert} command\textemdash{}e.g., \aalert{quietly alerted text}}
+\begin{itemize}
+	\item a quiet alert, italic, on every surface
+	\item[e.g.] \verb|\aalert{quietly alerted text}| prints as \aalert{quietly alerted text}
 \end{itemize}
 \end{block}
 %

@@ -95,13 +95,15 @@ is this template with the AMSUniBo style in place of the AMSBolognaFC one. Since
 1.8 the two have the same frames and demonstrate the same features; what differs
 is the palette, which the `Colours` frame documents, and the faces.
 
-In the `Citations` frame each weight is demonstrated on a header it can actually
-be read on. `\ccite` and `\cccite` are **both** light — a citation marker's
-usual home is a block header, which is dark — so `\ccite` sits on the `block`
-header and `\cccite`, the lighter of the two, on the `alertblock` one. Up to 1.7
-this template put `\cccite` on a light header, where it could not be seen. The
-frame also demonstrates the optional note both weights take since style 1.8, as
-in `\ccite[p.~42]{key}`.
+Since 1.10 the template follows style 1.11, where the commands take their colour
+from the surface they land on. The `Surfaces` frame states the rule — the
+`block` and `alertblock` headers are dark, all else light — and the doubled
+form of a command is the same command, smaller and quieter. `One Command, Every
+Surface` prints the same source line in the text and in every header and body.
+The `Citations` frame shows `\ccite` on a dark header, on the example one and
+in running text, with its optional note, as in `\ccite[p.~42]{key}`;
+`\cccite` is now the same command. `Alert & Emphasis` shows `\alert` and
+`\emph` in a header, and `\aalert` as the quiet alert.
 
 ## structure
 
