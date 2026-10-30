@@ -21,6 +21,13 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Style lag (a warning when .style is behind its style's main)
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/andreaomicini/beamer-AMSUniBo/main/ci/style-lag.sh -o /tmp/style-lag.sh || { echo "::warning title=style-lag::could not fetch ci/style-lag.sh"; exit 0; }
+          rc=0; out=$(sh /tmp/style-lag.sh) || rc=$?
+          echo "$out"
+          if [ "$rc" -eq 3 ]; then echo "::warning title=style-lag::$(echo "$out" | head -1)"; elif [ "$rc" -ne 0 ]; then echo "::warning title=style-lag::the check could not run (exit $rc)"; fi
+
       - name: Build latex
         uses: xu-cheng/latex-action@v3
         with:
