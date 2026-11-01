@@ -1,0 +1,63 @@
+# Builds the template on every push that touches what it builds from, and keeps the PDF as a
+# downloadable artifact; on main, releases it here and on GitHub. GitLab is the primary repository,
+# so the CI runs here (Andrea, 2026-11-01), as for the decks; GitHub is the mirror.
+#
+# The style is not installed on the runner: the .sty, .bst and background links at the root point
+# into the `.style` submodule, hence GIT_SUBMODULE_STRATEGY. The tag a release makes starts no
+# pipeline of its own.
+
+build:
+  image: texlive/texlive:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+      when: never
+    - changes:
+        - AMSBolognaFC-template.tex
+        - AMSBolognaFC-template.bib
+        - "*.sty"
+        - "*.bst"
+        - "*.pdf"
+        - .gitmodules
+        - .gitlab-ci.yml
+        - .style
+        - ci/*
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  script:
+    - latexmk -pdf -file-line-error -interaction=nonstopmode -halt-on-error AMSBolognaFC-template.tex
+  artifacts:
+    name: AMSBolognaFC-template
+    paths:
+      - AMSBolognaFC-template.pdf
+    expire_in: 4 weeks
+
+# --- the release: <version>-<UTC stamp>, here (package registry + release) and on GitHub -----------
+# ci/release.py; GITHUB_TOKEN is a fine-grained token (the style and template repositories, Contents
+# read and write) kept as a masked, protected variable in Settings > CI/CD > Variables.
+
+release:
+  stage: deploy
+  image: python:3-alpine
+  needs: [build]
+  rules:
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+      when: never
+    - changes:
+        - AMSBolognaFC-template.tex
+        - AMSBolognaFC-template.bib
+        - "*.sty"
+        - "*.bst"
+        - "*.pdf"
+        - .gitmodules
+        - .gitlab-ci.yml
+        - .style
+        - ci/*
+  variables:
+    GIT_SUBMODULE_STRATEGY: none
+  script:
+    - python3 ci/release.py AMSBolognaFC-template.tex AMSBolognaFC-template.pdf "AMSBolognaFC Beamer template"
+
+# --- is .style behind its style? ---------------------------------------------------------------
+include:
+  - project: andrea.omicini/beamer-AMSUniBo
+    file: /ci/style-lag.gitlab-ci.yml
