@@ -1,5 +1,9 @@
 # beamer-AMSBolognaFC-template
 
+> **Frozen since 2026-11-08.** The template is now
+> [almamater-template](https://github.com/andreaomicini/beamer-almamater-template), one template built
+> once per preset, `AMSBolognaFC` among them. Nothing here changes any more.
+
 ![AMSBolognaFC Beamer template logo](logo/amsbolognafc-template-full.svg)
 
 > A ready-to-use presentation skeleton for the
